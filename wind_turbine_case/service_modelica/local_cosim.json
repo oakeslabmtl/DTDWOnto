@@ -1,0 +1,65 @@
+{
+	"fmus": {
+		"{SetInput}": "../cosim_modelica/FMUs/SetInput",
+		"{TestBench}": "../cosim_modelica/FMUs/TestBench",
+		"{Dut}": "../cosim_modelica/FMUs/Dut",
+		"{Monitor}": "./FMUs/DutMonitor"
+	},
+	"connections": {
+		"{SetInput}.in_tb.y": [
+			"{TestBench}.tb.in_set_speed"
+		],
+		"{TestBench}.tb.out_angle": [
+			"{Dut}.dut.in_angle",
+			"{Monitor}.monitor.in_angle"
+		],
+		"{TestBench}.tb.out_speed": [
+			"{Dut}.dut.in_speed",
+			"{Monitor}.monitor.in_speed"
+		],
+		"{TestBench}.tb.out_acceleration": [
+			"{Dut}.dut.in_acceleration",
+			"{Monitor}.monitor.in_acceleration"
+		],
+		"{Dut}.dut.out_torque": [
+			"{TestBench}.tb.in_torque",
+			"{Monitor}.monitor.dut_out_torque"
+		],
+		"{SetInput}.in_dut.y": [
+			"{Dut}.dut.in_set_torque",
+			"{Monitor}.monitor.in_set_torque"
+		],
+		"{Dut}.dut.out_acceleration": [
+			"{Monitor}.monitor.dut_out_acceleration"
+		],
+		"{Dut}.dut.out_speed": [
+			"{Monitor}.monitor.dut_out_speed"
+		],
+		"{Dut}.dut.out_angle": [
+			"{Monitor}.monitor.dut_out_angle"
+		]
+	},
+	"parameters": {
+		"{SetInput}.in_tb.k": 1,
+		"{SetInput}.in_dut.k": -1,
+		"{Dut}.dut.dut_turbine.J": 1.6
+	},
+	"logVariables": {
+		"{SetInput}.in_tb": ["y"],
+		"{TestBench}.tb": ["out_angle_inertia"],
+		"{Dut}.dut": ["out_angle"],
+		"{Monitor}.monitor": ["out_conformance"]
+	},
+	"algorithm":{
+		"type":"fixed-step",
+		"size":0.001
+	},
+	"loggingOn": false,
+	"overrideLogLevel": "INFO",
+	"convergenceRelativeTolerance": 0.01,
+  "convergenceAbsoluteTolerance": 0.0,
+  "convergenceAttempts": 5,
+  "startTime": 0.0,
+  "endTime": 50.0,
+  "stepSize": 0.01
+}

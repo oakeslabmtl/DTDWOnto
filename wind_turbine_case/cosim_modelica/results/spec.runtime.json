@@ -1,0 +1,10 @@
+{
+  "environment_variables" : {
+    "{SetInput}.in_tb.k" : 1,
+    "{SetInput}.in_dut.k" : -1
+  },
+  "DataWriter" : [ {
+    "filename" : "outputs.csv",
+    "type" : "CSV"
+  } ]
+}

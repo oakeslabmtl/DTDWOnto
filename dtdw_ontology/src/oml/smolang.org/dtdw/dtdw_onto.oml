@@ -1,0 +1,118 @@
+vocabulary <http://smolang.org/dtdw/dtdw_onto#> as dtdw_onto {
+	extends  <http://smolang.org/dtdw/pko#> as pko
+	extends <http://smolang.org/dtdw/pplan#> as pplan
+	extends <http://smolang.org/dtdw/prov#> as prov
+
+	extends <http://www.w3.org/2001/XMLSchema#> as xsd
+	
+	concept DeploymentProcess < pko:Procedure
+	concept DeploymentStep < pplan:Step
+	concept DeploymentVariable < pplan:Variable
+	concept DeploymentArtifact < prov:Entity
+	
+	concept DigitalTwinDesign
+	concept DigitalTwinRole
+	concept DigitalTwinSystem  < prov:Collection
+	concept DigitalTwinElement < prov:Entity
+	
+	concept LoadStep < DeploymentStep
+	concept SimulateStep < DeploymentStep
+	concept FullyCalibrateStep < DeploymentStep
+	concept DeployStep < DeploymentStep
+	concept CompareStep < DeploymentStep
+	
+	concept DiagramVariable < DeploymentVariable
+	concept ModelVariable < DeploymentVariable
+	concept DataVariable < DeploymentVariable
+	
+	concept ModelRole < DigitalTwinRole
+	concept EnablerRole < DigitalTwinRole
+	concept ServiceRole < DigitalTwinRole
+	
+	concept ParameterArtifact < DeploymentArtifact
+	concept ModelArtifact < DeploymentArtifact
+	concept DataArtifact < DeploymentArtifact
+	concept SimulatorArtifact < DeploymentArtifact
+	
+	scalar property templateString [ 
+		domain DeploymentStep 
+		range xsd:string 
+		functional
+	]
+
+	scalar property availableIn  [ 
+		domain DeploymentVariable
+		range xsd:string 
+		functional
+	]
+
+	scalar property executedAt [ 
+		domain DeploymentVariable
+		range xsd:integer 
+		functional
+	]
+
+	scalar property order [ 
+		domain DeploymentStep 
+		range xsd:integer 
+		functional
+	]
+
+	relation entity implement [ 
+		from  DigitalTwinSystem 
+		to DigitalTwinDesign 
+		forward implements
+	]
+
+	relation entity role [ 
+		from DigitalTwinDesign 
+		to DigitalTwinRole 
+		forward hasRole
+	]
+
+	relation entity fills [ 
+		from DigitalTwinElement 
+		to DigitalTwinRole 
+		forward fillsRole
+	]
+
+	relation entity enable [ 
+		from EnablerRole 
+		to ServiceRole 
+		forward enables
+	]
+
+	relation entity require [ 
+		from EnablerRole 
+		to ModelRole 
+		forward requires
+	]
+
+	relation entity production [
+		from DeploymentStep
+		to DeploymentVariable
+		forward produces
+		reverse producedBy
+	]
+
+	relation entity consumption [
+		from DeploymentStep 
+		to DeploymentVariable 
+		forward consumes
+		reverse consumedBy
+	]
+
+  relation entity first [
+    from DeploymentProcess
+    to DeploymentStep
+    forward firstStep
+    reverse firstStepOf
+  ] < has
+
+  relation entity has  [
+  	from DeploymentProcess
+  	to DeploymentStep
+  	forward hasStep
+  	reverse stepOf
+  ]
+}

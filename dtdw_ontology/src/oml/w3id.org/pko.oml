@@ -1,0 +1,41 @@
+vocabulary <http://w3id.org/pko#> as pko {
+	extends <http://purl.org/net/p-plan#> as p-plan 
+	extends <http://www.w3.org/ns/prov#> as prov
+	
+	concept Procedure < prov:Plan
+	concept ProcedureExecution < prov:Activity
+	concept StepExecution < prov:Activity
+	
+	relation entity PKOExecutesProcedure [
+		from ProcedureExecution
+		to Procedure
+		forward executesProcedure
+	]
+	
+	relation entity PKOExecutesStep [
+		from StepExecution
+		to p-plan:Step
+		forward executesStep
+	]
+	
+	relation entity PKOIncludes [
+		from StepExecution
+		to ProcedureExecution
+		forward includedIn
+	]
+	
+	relation entity PKOhasStep [
+		from Procedure
+		to p-plan:Step
+		forward hasStep
+	]
+	relation entity PKOTarget [
+		from Procedure
+		forward hasProcedureTarget
+	]
+	relation entity PKOfirstStep [
+		from Procedure
+		to p-plan:Step
+		forward firstStep
+	] < PKOhasStep
+}

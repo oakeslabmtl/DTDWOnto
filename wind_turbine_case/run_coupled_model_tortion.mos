@@ -1,0 +1,3 @@
+loadModel(Modelica);
+loadFile("coupled_model_tortion.mo");
+simulate(coupled_model_tortion, stopTime=50.0, outputFormat="csv");

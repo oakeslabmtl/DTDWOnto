@@ -1,0 +1,28 @@
+# Gradle files
+.gradle
+build
+
+# MacOS files
+.DS_Store
+
+# Fuseki output directory
+.fuseki
+
+#Jupyter
+__pycache__/
+*.py[cod]
+*.dtmp
+*.log
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+
+#Latex
+main.pdf
+*.synctex(busy)
+
+
+/.idea/
+
+#drawio backup
+*.bkp

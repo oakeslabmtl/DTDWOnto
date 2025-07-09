@@ -1,0 +1,12 @@
+vocabulary <http://purl.org/net/p-plan#> as p-plan {
+	extends <http://www.w3.org/ns/prov#> as prov
+	concept Step
+	concept Variable
+	concept Plan < prov:Plan
+	
+	relation entity PPlanCorrespondance [
+		from prov:Entity
+		to Variable
+		forward correspondsTo
+	]
+}

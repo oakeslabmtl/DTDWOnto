@@ -1,0 +1,6 @@
+loadModel(Modelica);
+loadFile("coupled_decoupled.mo");
+loadFile("set_input.mo");
+loadFile("dut.mo");
+loadFile("test_bench.mo");
+simulate(coupled_decoupled,stopTime=50.0,outputFormat="csv");

@@ -1,0 +1,13 @@
+vocabulary <http://smolang.org/dtdw/pplan#> as pplan {
+    extends <http://smolang.org/dtdw/prov#> as prov
+
+    concept Step
+    concept Variable
+    concept Plan < prov:Plan
+
+    relation entity PPlanCorrespondance [
+      from prov:Entity
+      to Variable
+      forward correspondsTo
+    ]
+}

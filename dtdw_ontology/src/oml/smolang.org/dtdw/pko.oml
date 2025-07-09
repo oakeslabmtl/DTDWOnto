@@ -1,0 +1,41 @@
+vocabulary <http://smolang.org/dtdw/pko#> as pko {
+	extends <http://smolang.org/dtdw/pplan#> as pplan
+	extends <http://smolang.org/dtdw/prov#> as prov
+
+	concept Procedure < prov:Plan
+	concept ProcedureExecution < prov:Activity
+	concept StepExecution < prov:Activity
+
+	relation entity PKOExecutesProcedure [
+		from ProcedureExecution
+		to Procedure
+		forward executesProcedure
+	]
+
+	relation entity PKOExecutesStep [
+		from StepExecution
+		to pplan:Step
+		forward executesStep
+	]
+
+	relation entity PKOIncludes [
+		from StepExecution
+		to ProcedureExecution
+		forward includedIn
+	]
+
+	relation entity PKOhasStep [
+		from Procedure
+		to pplan:Step
+		forward hasStep
+	]
+	relation entity PKOTarget [
+		from Procedure
+		forward hasProcedureTarget
+	]
+	relation entity PKOfirstStep [
+		from Procedure
+		to pplan:Step
+		forward firstStep
+	] < PKOhasStep
+}

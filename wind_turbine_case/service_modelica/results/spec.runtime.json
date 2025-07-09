@@ -1,0 +1,11 @@
+{
+  "environment_variables" : {
+    "{SetInput}.in_tb.k" : 1,
+    "{SetInput}.in_dut.k" : -1,
+    "{Dut}.dut.dut_turbine.J" : 1.6
+  },
+  "DataWriter" : [ {
+    "filename" : "outputs.csv",
+    "type" : "CSV"
+  } ]
+}

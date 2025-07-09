@@ -1,0 +1,54 @@
+EXPORTS
+  ;***************************************************
+  ;Common Functions
+  ;****************************************************
+  DutMonitor_fmiGetTypesPlatform @1
+  DutMonitor_fmiGetVersion @2
+  DutMonitor_fmiSetDebugLogging @3
+  DutMonitor_fmiInstantiate @4
+  DutMonitor_fmiFreeInstance @5
+  DutMonitor_fmiSetupExperiment @6
+  DutMonitor_fmiEnterInitializationMode @7
+  DutMonitor_fmiExitInitializationMode @8
+  DutMonitor_fmiTerminate @9
+  DutMonitor_fmiReset @10
+  DutMonitor_fmiGetReal @11
+  DutMonitor_fmiGetInteger @12
+  DutMonitor_fmiGetBoolean @13
+  DutMonitor_fmiGetString @14
+  DutMonitor_fmiSetReal @15
+  DutMonitor_fmiSetInteger @16
+  DutMonitor_fmiSetBoolean @17
+  DutMonitor_fmiSetString @18
+  DutMonitor_fmiGetFMUstate @19
+  DutMonitor_fmiSetFMUstate @20
+  DutMonitor_fmiFreeFMUstate @21
+  DutMonitor_fmiSerializedFMUstateSize @22
+  DutMonitor_fmiSerializeFMUstate @23
+  DutMonitor_fmiDeSerializeFMUstate @24
+  DutMonitor_fmiGetDirectionalDerivative @25
+  ;***************************************************
+  ;Functions for FMI for Model Exchange
+  ;****************************************************
+  DutMonitor_fmiEnterEventMode @26
+  DutMonitor_fmiNewDiscreteStates @27
+  DutMonitor_fmiEnterContinuousTimeMode @28
+  DutMonitor_fmiCompletedIntegratorStep @29
+  DutMonitor_fmiSetTime @30
+  DutMonitor_fmiSetContinuousStates @31
+  DutMonitor_fmiGetDerivatives @32
+  DutMonitor_fmiGetEventIndicators @33
+  DutMonitor_fmiGetContinuousStates @34
+  DutMonitor_fmiGetNominalsOfContinuousStates @35
+  ;***************************************************
+  ;Functions for FMI for Co-Simulation
+  ;****************************************************
+  DutMonitor_fmiSetRealInputDerivatives @36
+  DutMonitor_fmiGetRealOutputDerivatives @37
+  DutMonitor_fmiDoStep @38
+  DutMonitor_fmiCancelStep @39
+  DutMonitor_fmiGetStatus @40
+  DutMonitor_fmiGetRealStatus @41
+  DutMonitor_fmiGetIntegerStatus @42
+  DutMonitor_fmiGetBooleanStatus @43
+  DutMonitor_fmiGetStringStatus @44

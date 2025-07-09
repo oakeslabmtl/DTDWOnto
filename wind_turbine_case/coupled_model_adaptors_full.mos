@@ -1,0 +1,4 @@
+loadModel(Modelica);
+loadFile("coupled_model_adaptors_full.mo");
+simulate(coupled_model_adaptors_full,stopTime=50.0,outputFormat="csv");
+

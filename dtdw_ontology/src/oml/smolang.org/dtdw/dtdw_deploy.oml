@@ -1,0 +1,277 @@
+description <http://smolang.org/dtdw/dtdw_deploy#> as dtdw_deploy {
+  uses  <http://smolang.org/dtdw/pko#> as pko
+	uses <http://smolang.org/dtdw/pplan#> as pplan
+	uses <http://smolang.org/dtdw/prov#> as prov
+	uses <http://smolang.org/dtdw/dtdw_onto#> as dtdw_onto
+
+	uses <http://www.w3.org/2001/XMLSchema#> as xsd
+  uses <http://www.w3.org/2000/01/rdf-schema#> as rdfs
+
+	instance model1 : dtdw_onto:ModelVariable [
+	 	dtdw_onto:availableIn "coupled_model_tortion.mos"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	 @rdfs:label
+	instance model2 : dtdw_onto:ModelVariable [
+	 	dtdw_onto:availableIn "coupled_model_adaptors_full.mos"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	instance model3 : dtdw_onto:ModelVariable [
+	 	dtdw_onto:availableIn "coupled_decoupled.mo"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	instance model4 : dtdw_onto:ModelVariable [
+	 	dtdw_onto:availableIn "cosim_modelica/local_cosim.json"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+  instance model6 : dtdw_onto:ModelVariable [
+     dtdw_onto:availableIn "cosim_modelica/local_cosim.json"^^xsd:string
+     dtdw_onto:executedAt 0
+  ]
+
+  instance model7 : dtdw_onto:ModelVariable [
+     dtdw_onto:availableIn "monitor_service/csv_recorder.py"^^xsd:string
+     dtdw_onto:executedAt 0
+  ]
+
+  instance model8 : dtdw_onto:ModelVariable [
+     dtdw_onto:availableIn "monitor_service/dut_monitor.py"^^xsd:string
+     dtdw_onto:executedAt 0
+  ]
+
+  instance model9 : dtdw_onto:ModelVariable [
+     dtdw_onto:availableIn "monitor_service/csv_streamer.py"^^xsd:string
+     dtdw_onto:executedAt 0
+  ]
+
+  instance model10 : dtdw_onto:ModelVariable [
+     dtdw_onto:availableIn "monitor_service/dut_monitor_fmu.py"^^xsd:string
+     dtdw_onto:executedAt 0
+  ]
+
+	instance data1 : dtdw_onto:DiagramVariable [
+	 	dtdw_onto:availableIn "coupled_model_tortion_res.csv"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	instance data2 : dtdw_onto:DiagramVariable [
+	 	dtdw_onto:availableIn "coupled_model_adaptors_full_res.csv"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	@rdfs:label "picture, not saved in a file"
+	instance data3 : dtdw_onto:DiagramVariable
+
+	instance data4 : dtdw_onto:DiagramVariable [
+	  dtdw_onto:availableIn "decoupled_model/coupled_decoupled_res.csv"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	@rdfs:label "picture, not saved in a file"
+	instance data5 : dtdw_onto:DiagramVariable
+
+	instance data6 : dtdw_onto:DiagramVariable [
+	  dtdw_onto:availableIn "cosim_modelica/results/outputs.csv"^^xsd:string
+	 	dtdw_onto:executedAt 0
+	]
+
+	@rdfs:label "picture, not saved in a file"
+	instance data7 : dtdw_onto:DiagramVariable
+
+	instance data8 : dtdw_onto:DiagramVariable [
+    dtdw_onto:availableIn "service_modelica/results/outputs.csv"^^xsd:string
+    dtdw_onto:executedAt 0
+  ]
+
+  instance data9 : dtdw_onto:DiagramVariable [
+    dtdw_onto:availableIn "monitor_service/csv_recorder.csv"^^xsd:string
+    dtdw_onto:executedAt 0
+  ]
+
+  instance data10 : dtdw_onto:DiagramVariable [
+    dtdw_onto:availableIn "monitor_service/csv_recorder_with_fmu.csv"^^xsd:string
+    dtdw_onto:executedAt 0
+  ]
+
+  instance data11 : dtdw_onto:DiagramVariable [
+    dtdw_onto:availableIn "service_modelica/fmus/DutMonitor/"^^xsd:string
+    dtdw_onto:executedAt 0
+  ]
+
+  @rdfs:label "input [1-3]"^^xsd:string
+  instance coupled_model_tortion : dtdw_onto:LoadStep [
+    dtdw_onto:produces model1
+    dtdw_onto:order 1
+  ]
+
+  @rdfs:label "input [6-7]"^^xsd:string
+  instance coupled_model_adaptors : dtdw_onto:LoadStep [
+    dtdw_onto:produces model2
+    dtdw_onto:order 2
+  ]
+
+  @rdfs:label "input [10-11]"^^xsd:string
+  instance coupled_decoupled : dtdw_onto:LoadStep [
+    dtdw_onto:produces model3
+    dtdw_onto:order 3
+  ]
+
+  @rdfs:label "input [13]"^^xsd:string
+  instance local_cosim : dtdw_onto:LoadStep [
+    dtdw_onto:produces model4
+    dtdw_onto:order 4
+  ]
+
+  @rdfs:label "input [13]"^^xsd:string
+  instance cosim_effects : dtdw_onto:LoadStep [
+    dtdw_onto:produces model4
+    dtdw_onto:order 5
+  ]
+
+  instance csv_recorder : dtdw_onto:LoadStep [
+    dtdw_onto:produces model6
+    dtdw_onto:produces model7
+    dtdw_onto:produces model8
+    dtdw_onto:produces model9
+    dtdw_onto:produces model10
+  ]
+
+	@rdfs:label "input [4]"^^xsd:string
+	instance simulate_coupled_model_tortion : dtdw_onto:SimulateStep [
+	 	dtdw_onto:consumes model1
+	 	dtdw_onto:produces data1
+	 	dtdw_onto:order 6
+	]
+
+	@rdfs:label "input [8]"^^xsd:string
+	instance simulate_coupled_model_adaptors : dtdw_onto:SimulateStep [
+	 	dtdw_onto:consumes model2
+	 	dtdw_onto:produces data2
+	 	dtdw_onto:order 7
+	]
+
+	@rdfs:label "input [12]"^^xsd:string
+	instance simulate_coupled_decoupled : dtdw_onto:SimulateStep [
+	 	dtdw_onto:consumes model3
+	 	dtdw_onto:produces data4
+	 	dtdw_onto:order 8
+	]
+
+	instance simulate_local_cosim : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model4
+    dtdw_onto:produces data8
+    dtdw_onto:order 9
+  ]
+
+  instance simulate_cosim_effects : dtdw_onto:SimulateStep [
+     dtdw_onto:consumes model4
+     dtdw_onto:produces data8
+     dtdw_onto:order 10
+  ]
+
+  instance simulate_csv_recorder : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model7
+    dtdw_onto:produces data9
+  ]
+
+  instance simulate_dut_monitor : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model8
+  ]
+
+  instance simulate_csv_streamer : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model9
+    dtdw_onto:produces data8
+  ]
+
+  instance simE9 : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model7
+    dtdw_onto:produces data10
+  ]
+
+  instance simE10 : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model10
+    dtdw_onto:produces data11
+  ]
+
+  instance simE11 : dtdw_onto:SimulateStep [
+    dtdw_onto:consumes model9
+    dtdw_onto:produces data8
+  ]
+
+	@rdfs:label "input [9]"^^xsd:string
+	instance compare_coupled_model_tortion : dtdw_onto:CompareStep [
+	 	dtdw_onto:consumes data1
+	 	dtdw_onto:order 11
+	]
+
+	@rdfs:label "input [13]"^^xsd:string
+	instance compare_coupled_model_adaptors : dtdw_onto:CompareStep [
+	 	dtdw_onto:consumes data2
+	 	dtdw_onto:order 12
+	]
+
+	@rdfs:label "input [15]"^^xsd:string
+	instance compare_coupled_model_adaptors_full : dtdw_onto:CompareStep [
+	  dtdw_onto:consumes data1
+	  dtdw_onto:consumes data2
+	  dtdw_onto:order 13
+	]
+
+   instance compare_coupled_decoupled : dtdw_onto:CompareStep [
+     dtdw_onto:consumes data2
+     dtdw_onto:consumes data4
+     dtdw_onto:order 14
+   ]
+
+  instance compare_local_sim : dtdw_onto:CompareStep [
+    dtdw_onto:consumes data1
+    dtdw_onto:consumes data2
+    dtdw_onto:consumes data4
+    dtdw_onto:consumes data6
+  ]
+
+  instance compE7 : dtdw_onto:CompareStep [
+    dtdw_onto:consumes data1
+    dtdw_onto:consumes data2
+  ]
+
+  instance compE8 : dtdw_onto:CompareStep [
+    dtdw_onto:consumes data4
+    dtdw_onto:consumes data2
+  ]
+
+	instance HALTProcess : dtdw_onto:DeploymentProcess [
+	 	dtdw_onto:firstStep coupled_model_tortion
+	 	dtdw_onto:hasStep coupled_model_adaptors
+	 	dtdw_onto:hasStep coupled_decoupled
+	 	dtdw_onto:hasStep local_cosim
+	 	dtdw_onto:hasStep cosim_effects
+	 	dtdw_onto:hasStep simulate_coupled_model_tortion
+	 	dtdw_onto:hasStep simulate_coupled_model_adaptors
+	 	dtdw_onto:hasStep simulate_coupled_decoupled
+	 	dtdw_onto:hasStep simulate_local_cosim
+	 	dtdw_onto:hasStep simulate_cosim_effects
+	 	dtdw_onto:hasStep compare_coupled_model_tortion
+	 	dtdw_onto:hasStep compare_coupled_model_adaptors
+	 	dtdw_onto:hasStep compare_coupled_model_adaptors_full
+	 	dtdw_onto:hasStep compare_coupled_decoupled
+	]
+
+  instance ServiceDeploymentProcess : dtdw_onto:DeploymentProcess [
+    dtdw_onto:firstStep local_cosim
+    dtdw_onto:hasStep csv_recorder
+    dtdw_onto:hasStep simulate_local_cosim
+    dtdw_onto:hasStep compE7
+    dtdw_onto:hasStep simulate_csv_recorder
+    dtdw_onto:hasStep simulate_dut_monitor
+    dtdw_onto:hasStep simulate_csv_streamer
+    dtdw_onto:hasStep simE9
+    dtdw_onto:hasStep simE10
+    dtdw_onto:hasStep simE11
+    dtdw_onto:hasStep compE8
+  ]
+}

@@ -1,0 +1,19 @@
+vocabulary <http://www.w3.org/ns/prov#> as prov {
+		concept Entity
+		concept Activity
+		concept Plan < Entity
+		concept Collection < Entity
+		
+	relation entity ProvMembership [
+		from Collection
+		to Entity
+		forward hadMember
+	]
+	
+	relation entity ProvUses [
+		from Entity
+		to Activity
+		forward used
+		reverse wasGeneratedBy
+	]
+}
