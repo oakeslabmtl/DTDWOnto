@@ -1,11 +1,12 @@
-# Reproducibility Package
+# DTDW Ontology and Sample Notebooks
 
-This reproducibility package is for the paper titled **Constructing Digital Twin Services: Applying an Ontologically-Based Workflow Approach in Practice** It includes Jupyter notebooks, Modelica models executed via OpenModelica, and a RabbitMQ server used for inter-process communication.
+This repository is for the paper titled **Constructing Digital Twin Services: Applying an Ontologically-Based Workflow Approach in Practice**.
 
+It includes the Digital Twin Deployment Workflow (DTDW) Ontology in OML, and two cases described in the paper. These contain Jupyter notebooks, Modelica models executed via OpenModelica, and a RabbitMQ server used for inter-process communication.
 
 ## Table of Contents
 
-- [Reproducibility Package](#reproducibility-package)
+- [DTDW Ontology](#dtdw-ontology)
     - [Table of Contents](#table-of-contents)
     - [Cases](#cases)
     - [Requirements](#requirements)
