@@ -106,4 +106,5 @@ pip install -r requirements.txt
 
 ## License
 
-This package is shared under the MIT License. See `LICENSE` for details.
+This project is licensed under the 
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
