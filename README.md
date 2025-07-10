@@ -109,7 +109,8 @@ pip install -r requirements.txt
 Cite this work as follows, or download the BibTeX entry [here](/assets/bibtex.bib):
 
 ```
-Pambo, C., Andersen, M., Gomes, C., Kamburjan, E. and Oakes, B. (2025). Constructing Digital Twin Services: Applying an Ontologically-Based Workflow Approach in Practice. 
+Pambo, C., Andersen, M., Gomes, C., Kamburjan, E. and Oakes, B. (2025). 
+Constructing Digital Twin Services: Applying an Ontologically-Based Workflow Approach in Practice. 
 
 ```
 

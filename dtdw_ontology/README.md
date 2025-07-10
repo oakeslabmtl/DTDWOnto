@@ -42,7 +42,7 @@ gradle/
 ```
 These files let you run a fixed `Gradle` version without installing `Gradle` yourself
 
-## Run DTDeploy Ontology
+## Run DTDW Ontology
 
 1. **Ensure the wrapper is executable** for **macOS/Linux**
 
