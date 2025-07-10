@@ -222,7 +222,8 @@ class RabbitMQDockerService(DockerContainerService):
     super().__init__(container_name, logger)
     self._log_file_name = log_file_name
     self._docker_compose_directory_path = resource_file_path("rabbitmq_server")
-    self.configs = load_config("rabbitmq_server/rabbitmq.conf")
+    self.configs = load_config(
+      "wind_turbine_case/rabbitmq_server/rabbitmq.conf")
     self._default_user = self.configs["default_user"] if self.configs else ""
     self._default_pass = self.configs["default_pass"] if self.configs else ""
 

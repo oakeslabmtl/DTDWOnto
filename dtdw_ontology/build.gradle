@@ -1,8 +1,8 @@
 /* 
  * The Maven coordinates for the project artifact
  */
-ext.title = 'DTDeply'
-description = 'This is an example'
+ext.title = 'DTDW Ontology'
+description = 'Digital Twin Deployment Workflow'
 group = 'org.smolang'
 version = '1.0.0'
 
@@ -35,9 +35,9 @@ buildscript {
  */
 ext {
     // Name of dataset (matches one used in graph_db.ttl file)
-    dataset = 'DeployWork'
+    dataset = 'dtdw_deploy'
     // Root ontology IRI of the dataset
-    rootIri = 'http://smolang.org/DTDeploy/descript'
+    rootIri = 'http://smolang.org/dtdw/dtdw_deploy'
 }
 
 /*

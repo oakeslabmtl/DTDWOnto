@@ -19,7 +19,7 @@ ALLOWED_TIME_DIFFERENCE_IN_SEC = 300  # 86400
 #########################################
 
 # Logger
-logging.config.fileConfig("logging.conf")
+logging.config.fileConfig("configs/logging.conf")
 
 ## Step class
 class Step:

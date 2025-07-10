@@ -104,6 +104,15 @@ pip install -r requirements.txt
 
 * Ports in use? Stop other services using ports `5672` or `15672`.
 
+## Citation
+
+Cite this work as follows, or download the BibTeX entry [here](/assets/bibtex.bib):
+
+```
+Pambo, C., Andersen, M., Gomes, C., Kamburjan, E. and Oakes, B. (2025). Constructing Digital Twin Services: Applying an Ontologically-Based Workflow Approach in Practice. 
+
+```
+
 ## License
 
 This project is licensed under the 

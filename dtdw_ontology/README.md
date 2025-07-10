@@ -2,7 +2,7 @@
 
 Gradle requires:
 
-1. [JDK 11 or higher](https://www.oracle.com/ca-en/java/technologies/downloads/)
+1. [JDK 21 or higher](https://www.oracle.com/ca-en/java/technologies/downloads/)
 2. [Fuseki](https://jena.apache.org/documentation/fuseki2/)
 3. [openCAESER](https://www.opencaesar.io/)
 
@@ -10,7 +10,7 @@ You can verify by running on terminal:
 ```
 java -version
 ```
-which should report something like openjdk version `11.0.x` or higher
+which should report something like openjdk version `21.0.x` or higher
 
 ## (Optional) Set JAVA_HOME
 
@@ -25,7 +25,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 - Windows:
 1. Open **System Properties** → **Environment Variables**
-2. Create or edit `JAVA_HOME` to point to your JDK install (e.g. `C:\Program Files\Java\jdk-11.0.x`)
+2. Create or edit `JAVA_HOME` to point to your JDK install (e.g. `C:\Program Files\Java\jdk-21.0.x`)
 3. Add `%JAVA_HOME%\bin` to your Path variable
 
 ## Gradle Wrapper files
@@ -92,7 +92,7 @@ Make sure you ran `chmod +x gradlew` on **macOS/Linux**
 Always invoke via the wrapper scripts (`./gradlew or gradlew.bat`), never gradle, to guarantee the correct version
 
 - **Wrong Java version**
-Confirm `java -version` is ≥ 11, and that `JAVA_HOME` (if set) points to that JDK
+Confirm `java -version` is ≥ 21, and that `JAVA_HOME` (if set) points to that JDK
 
 
 With these commands you can reliably build, reason over, load, query, and publish your `DTKW` ontology dataset.

@@ -12,8 +12,8 @@
 
 <#service>
     rdf:type                          fuseki:Service ;
-    rdfs:label                        "Deploy Work" ; # Human readable label for dataset
-    fuseki:name                       "DeployWork" ;  # Name of the dataset in the endpoint url
+    rdfs:label                        "Digital Twin Deployment Workflow" ; # Human readable label for dataset
+    fuseki:name                       "dtdw_deploy" ;  # Name of the dataset in the endpoint url
     fuseki:serviceReadGraphStore      "get" ;
     fuseki:serviceReadWriteGraphStore "data" ;
     fuseki:serviceQuery               "query" ;

@@ -274,4 +274,147 @@ description <http://smolang.org/dtdw/dtdw_deploy#> as dtdw_deploy {
     dtdw_onto:hasStep simE11
     dtdw_onto:hasStep compE8
   ]
+
+  /* Concrete Mixer Case */
+    /* Data/Models */
+    instance avg_flow_rate_data : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/avg_flow_rate.csv"^^xsd:string
+      dtdw_onto:executedAt 0 //?
+    ]
+
+    instance avg_flow_rate_plot : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/avg_flow_rate_plot.pdf"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance state_machine_model : dtdw_onto:ModelVariable [
+      dtdw_onto:availableIn "service/state_machine_model.pickle"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance state_machine_parameters : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/state_machine_parameters.json"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance state_machine_validity_plot : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/state_machine_validity_plot.pdf"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance dt_service_model : dtdw_onto:ModelVariable [
+      dtdw_onto:availableIn "service/dt_service_model.pickle"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance dt_service_validity_plot : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/dt_service_validity_plot.pdf"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance network_error_metrics_plot : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/network_error_metrics_plot.pdf"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance network_latency_metrics_plot : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/network_latency_metrics_plot.pdf"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance network_error_data : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/network_error.csv"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance network_latency_data : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/network_latency.csv"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    instance anomaly_signal_data : dtdw_onto:DataVariable [
+      dtdw_onto:availableIn "service/anomaly_signal.csv"^^xsd:string
+      dtdw_onto:executedAt 0
+    ]
+
+    /* Steps */
+    instance process_flow_rate : dtdw_onto:LoadStep [
+      dtdw_onto:produces avg_flow_rate_data
+      dtdw_onto:order 1
+    ]
+
+    instance plot_flow_rate : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes avg_flow_rate_data
+      dtdw_onto:produces avg_flow_rate_plot
+      dtdw_onto:order 2
+    ]
+
+    instance prototype_state_machine : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes avg_flow_rate_plot
+      dtdw_onto:produces state_machine_model
+      dtdw_onto:order 3
+    ]
+
+    instance calibrate_state_machine : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes avg_flow_rate_data
+      dtdw_onto:consumes state_machine_model
+      dtdw_onto:produces state_machine_parameters
+      dtdw_onto:order 4
+    ]
+
+    instance validate_state_machine : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes avg_flow_rate_data
+      dtdw_onto:consumes state_machine_model
+      dtdw_onto:consumes state_machine_parameters
+      dtdw_onto:consumes state_machine_validity_plot
+      dtdw_onto:order 5
+    ]
+
+    instance emqx_component : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes state_machine_model
+      dtdw_onto:consumes state_machine_parameters
+      dtdw_onto:produces dt_service_model
+      dtdw_onto:order 6
+    ]
+
+    instance test_dt_service : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes avg_flow_rate_data
+      dtdw_onto:consumes dt_service_model
+      dtdw_onto:produces anomaly_signal_data
+      dtdw_onto:order 7
+    ]
+
+    instance validate_dt_service : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes anomaly_signal_data
+      dtdw_onto:consumes dt_service_model
+      dtdw_onto:produces dt_service_validity_plot
+      dtdw_onto:order 8
+    ]
+
+    instance benchmark_network_error : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes network_error_data
+      dtdw_onto:consumes dt_service_model
+      dtdw_onto:produces network_error_metrics_plot
+      dtdw_onto:order 9
+    ]
+
+    instance benchmark_network_latency : dtdw_onto:SimulateStep [
+      dtdw_onto:consumes network_latency_data
+      dtdw_onto:consumes dt_service_model
+      dtdw_onto:produces network_latency_metrics_plot
+      dtdw_onto:order 10
+    ]
+
+    instance ConcreteMixerCaseProcess : dtdw_onto:DeploymentProcess [
+      dtdw_onto:firstStep process_flow_rate
+      dtdw_onto:hasStep plot_flow_rate
+      dtdw_onto:hasStep prototype_state_machine
+      dtdw_onto:hasStep calibrate_state_machine
+      dtdw_onto:hasStep validate_state_machine
+      dtdw_onto:hasStep emqx_component
+      dtdw_onto:hasStep test_dt_service
+      dtdw_onto:hasStep validate_dt_service
+      dtdw_onto:hasStep benchmark_network_error
+      dtdw_onto:hasStep benchmark_network_latency
+    ]
 }
