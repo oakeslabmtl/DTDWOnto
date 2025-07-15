@@ -21,7 +21,7 @@ There are two cases in this reproducibility package.
 
 1. The wind turbine case, first described in **Towards Ontological Service-Driven Engineering of Digital Twins**. This case has Jupyter notebooks to follow and execute.
 2. The concrete mixing case described in the paper. As this case is industrially-sensitive, only the Jupyter notebook skeleton and empty files are provided.
-    
+
 ## Requirements
 
 Ensure you have the following installed:
@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 3. **Verify that RabbitMQ is running**:
 
-   * Management UI: [http://localhost:15672](http://localhost:15672) (username: `guest`, password: `guest`)
+   * Management UI: [http://localhost:15672](http://localhost:15672) (username: `incubator`, password: `incubator`)
    * AMQP URL: `amqp://localhost:5672`
 
 4. **Check OpenModelica (`omc`) is in your PATH**:
