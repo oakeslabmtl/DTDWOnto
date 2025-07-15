@@ -64,7 +64,9 @@ pip install -r requirements.txt
    * Management UI: [http://localhost:15672](http://localhost:15672) (username: `incubator`, password: `incubator`)
    * AMQP URL: `amqp://localhost:5672`
 
-4. **Check OpenModelica (`omc`) is in your PATH**:
+4. **Install OpenModelica and check that OpenModelica (`omc`) is in your PATH**:
+
+[https://openmodelica.org/](https://openmodelica.org/)
 
     ```bash
     omc --version
